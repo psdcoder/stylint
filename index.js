@@ -19,7 +19,7 @@ var stampit = require( 'stampit' )
  * @param {function} [callback] [a callback called just before exiting the process if not watching]
  * @return {Object} [the composed stylint object]
  */
-var Stylint = function( path, config, callback ) {
+var stylint = function( path, config, callback ) {
 	var Lint
 
 	Lint = stampit().compose(
@@ -36,4 +36,9 @@ var Stylint = function( path, config, callback ) {
 	return Lint
 }
 
-module.exports = Stylint
+var api = function( config ) {
+	return stylint().create( {}, { config: config } )
+}
+
+module.exports = stylint
+module.exports.api = api
